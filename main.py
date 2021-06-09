@@ -1109,29 +1109,43 @@ async def userinfo(ctx, *, user: discord.Member = None):
 
 
 
-@bot.command(aliases=['cs'])
+@bot.command()
 async def clone(ctx):
-	await ctx.message.delete()
-	await ctx.send("please wait, this may take a few seconds..")
-	await bot.create_guild(f'{ctx.guild.name} 2.0')
-	await asyncio.sleep(4)
-	for gee in bot.guilds:
-		if f'{ctx.guild.name} 2.0' in gee.name:
-			for c in gee.channels:
-				await c.delete()
-			for cate in ctx.guild.categories:
-				x = await gee.create_category(f"{cate.name}")
-				for cn in cate.channels:
-					if isinstance(cn, discord.VoiceChannel):
-						await x.create_voice_channel(f"{cn}")
-					if isinstance(cn, discord.TextChannel):
-						await x.create_text_channel(f"{cn}")
-	await ctx.send("server has been cloned!")
-	try:
-		await gee.edit(icon=ctx.guild.icon_url)
-	except:
-		pass
+    await ctx.message.delete()
+    await ctx.send("please wait, this may take a few seconds..")
+    await bot.create_guild(f'{ctx.guild.name} 2.0')
+    await asyncio.sleep(2)
+    for gee in bot.guilds:
+        if f'{ctx.guild.name} 2.0' in gee.name:
+            for role in ctx.guild.roles:
+                name = role.name
+                color = role.colour
+                perms = role.permissions
+                await gee.create_role(name=name, permissions=perms, colour=color)
+            for c in gee.channels:
+                await c.delete()
+            for cate in ctx.guild.categories:
+                x = await gee.create_category(f"{cate.name}")
+                for cn in cate.channels:
+                    if isinstance(cn, discord.VoiceChannel):
+                        await x.create_voice_channel(f"{cn}")
+                    if isinstance(cn, discord.TextChannel):
+                        f = await x.create_text_channel(f"{cn}")
+    await ctx.send("server has been cloned!")
+    try:
+        filename = "cloned.png"
+        var = str(ctx.guild.icon_url)
+        jpgconv = var.replace('webp', 'png')
+        f = open(filename, 'wb')
+        f.write(requests.get(jpgconv).content)
+        f.close()
+        with open(filename, 'rb') as f:
+          flr = f.read()
+        await gee.edit(icon=flr)
+    except:
+      pass
 
+#
 
 @bot.command()
 async def stream(ctx, *, text=''):
