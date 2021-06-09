@@ -36,8 +36,14 @@ now that you have completed the setup, hepi Selfbot 24/7 should be ready to use!
 
 #
 
-### version 1.1.2
+### version 1.2.0
 
--snipe command has been fixed
+-Giveaway sniper and nitro sniper was improved
+
+-print_contents() was fixed
+
+-Massdm was fixed
+
+-Added over 20 new commands
 
 
