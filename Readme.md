@@ -4,6 +4,8 @@ tap [here](https://youtu.be/kZjsA830Px0) for instructions on how to do the setup
 
 ### Setup
 
+on [replit.com](https://replit.com), click + New repl button. click on the Import From GitHub button and enter this repository URL, click on the import from GitHub button that is blue and you have succefully imported hepi Selfbot!
+
 Enter your token and password on the setup.json file.
 ![Valkyrie-setupZ](https://cdn.discordapp.com/attachments/825388954982285332/847496585633333359/Screenshot_2021-05-27-22-28-32-54.jpg)
 
