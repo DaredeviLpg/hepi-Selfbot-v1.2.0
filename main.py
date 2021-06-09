@@ -152,7 +152,7 @@ async def help(ctx, r=None):
 		    title='text',
 		    color=604050,
 		    description=
-		    f'**{bot.command_prefix}fucking**\nshows a text animation of a penis going inside a vagina 😳\n\n**{bot.command_prefix}history**\nsaves the chat history on a .txt file.\n\n**{bot.command_prefix}uwufy** `<text>`\nuwufies the provided text.\n\n**{bot.command_prefix}pythonfy** `<text>` ```py\n#converts the provided text to a python code block.\n```\n**{bot.command_prefix}smalltxt** `<text>`\nconverts the provided text to small letters.\n\n**{bot.command_prefix}blank**\nsends a blank character.\n\n**{bot.command_prefix}fastdel** `<text>`\nimmideatly deletes the provided text.\n\n**{bot.command_prefix}reverse** `<text>`\nreverses the provided text.\n\n**{bot.command_prefix}sniper**\nshows a text art of a sniper.'
+		    f'**{bot.command_prefix}fucking**\nshows a text animation of a penis going inside a vagina 😳\n\n**{bot.command_prefix}history**\nsaves the chat history on a .txt file.\n\n**{bot.command_prefix}uwufy** `<text>`\nuwufies the provided text.\n\n**{bot.command_prefix}pythonfy** `<text>` ```py\n#converts the provided text to a python code block.\n```\n**{bot.command_prefix}smalltxt** `<text>`\nconverts the provided text to small letters.\n\n**{bot.command_prefix}blank**\nsends a blank character.\n\n**{bot.command_prefix}fastdel** `<text>`\nimmideatly deletes the provided text.\n\n**{bot.command_prefix}reverse** `<text>`\nreverses the provided text.\n\n**{bot.command_prefix}sniper**\nshows a text art of a sniper.\n\n**{bot.command_prefix}typetext** `<text>`\ncycles through the provided text.'
 		)
 	if r == 'image-manipulation':
 		embed = discord.Embed(
@@ -197,7 +197,18 @@ async def stopgiveawaysniper(ctx):
 	await ctx.message.delete()
 	bot.gws = False 
 	await ctx.send("giveaway sniper is now **Disabled**!")
-	
+
+@bot.command()
+async def typetext(ctx, *, t=''):
+	if t == '':
+		await ctx.send("provide a text.")
+	await ctx.message.delete()
+	g = await ctx.send(t)
+	c = ''
+	for letter in t:
+	  c = c + letter
+	  await g.edit(content=c)
+	  await asyncio.sleep(0.6)
 bot.ns = False
 @bot.command()
 async def nitrosniper(ctx):
