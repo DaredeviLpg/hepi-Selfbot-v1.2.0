@@ -1426,9 +1426,7 @@ def print_contents():
       nitro = "Nitro Premium"
     elif res['premium_type'] == 1:
       nitro = "Nitro Classic"
-  2fa = f"{Fore.RED}Disabled"
-  if token.startswith("mfa"):
-    2fa = f"{Fore.GREEN}Enabled 🔐"
+
   print(f'''
                                
 {Fore.RED}
@@ -1462,7 +1460,7 @@ email: {Fore.RESET}{res['email']}
 token: {Fore.RESET}{token}
 
 {Fore.YELLOW}
-2fa: {2fa}
+2fa: 1
 
 {Fore.GREEN}
 nitro: {Fore.RESET}{nitro}
